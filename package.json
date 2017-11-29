@@ -2,8 +2,9 @@
   "name": "zion",
   "version": "0.0.1",
   "description": "A light-weight, un-opinionated game engine/library based on HTML5 Canvas game development.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/thomasyimgit/zion/issues"
   },
-  "homepage": "https://github.com/thomasyimgit/zion#readme"
+  "homepage": "https://github.com/thomasyimgit/zion#readme",
+  "devDependencies": {
+    "eslint": "^4.12.0"
+  }
 }
