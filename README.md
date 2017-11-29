@@ -26,7 +26,10 @@ To build a game, whatever platform it's based on, we can think of the whole game
 The more you decouple between the state updating logic and the game rendering, the easier your game is to maintain and scale.
 
 ```js
-// in your entry file you'll have the main class extends Zion
+import zion from 'zion';
+
+const Zion = zion.main();
+// in your entry file you'll have the main class extend Zion
 
 class Game extends Zion {
   update() {
@@ -52,6 +55,8 @@ Specifically, for image rendering, Zion uses the [**canvas-image-cache**](https:
 
 ### Particle System
 
+TBD
+
 ### I/O
 
 * Audio Manager
@@ -66,7 +71,7 @@ audioMgr.findByName('./collision.mp3').play();
 
 * Keyboard Input and Output
 
-Zion uses `keybus` for keyboard handler, which supports simultaneous keydown event.
+Zion uses `keybus` for keyboard handler, which supports simultaneous keydown event, which is essential in direction control.
 
 <!--- The APIs of keybus should be modified further --->
 
@@ -74,9 +79,9 @@ Zion uses `keybus` for keyboard handler, which supports simultaneous keydown eve
 // pass in the DOM element to which all the events are binded
 const kb = zion.createKeybus(document)
 
-let enterKeydownHandler = kb.down(13, () => console.log('Enter keydown!'))
+let token = kb.down(13, () => console.log('Enter keydown!'))
 
-enterKeydownHandler.remove()
+token.remove()
 ```
 
 * Drag and Drop
@@ -85,7 +90,7 @@ TBD
 
 ### Network
 
-Zion uses Express.js and Socket.io to host online multi-player games. The event-based communication between client and server makes it easy to figure out the flow.
+Zion uses `Express.js` and `Socket.io` to host online multi-player games. The event-based communication between client and server makes it easy to figure out the data flow.
 
 <!--- The APIs should be modified further --->
 
@@ -108,6 +113,7 @@ network.listen({
 
 ### AI
 
+TBD
 
 ### Demos
 

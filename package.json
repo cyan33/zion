@@ -1,0 +1,26 @@
+{
+  "name": "zion",
+  "version": "0.0.1",
+  "description": "A light-weight, un-opinionated game engine/library based on HTML5 Canvas game development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasyimgit/zion.git"
+  },
+  "keywords": [
+    "game",
+    "engine",
+    "library",
+    "html5",
+    "canvas"
+  ],
+  "author": "Chang Yan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomasyimgit/zion/issues"
+  },
+  "homepage": "https://github.com/thomasyimgit/zion#readme"
+}
