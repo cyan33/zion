@@ -34,6 +34,10 @@ const { Game } = zion.createComponents();
 // in your entry file you'll have the main class extend the base class `Game`
 
 class MyGame extends Game {
+  constructor() {
+    this.gameloop = this.gameloop.bind(this);
+  }
+
   update() {
 
   }
@@ -44,7 +48,7 @@ class MyGame extends Game {
 
   init() {
     // run update and render consecutively, in a constant interval
-    gameLoop();
+    const timer = setInterval(this.gameLoop, TIME_INTERVAL);
   }
 }
 ```
@@ -98,7 +102,7 @@ audioMgr.findByName('collision').play();
 
 * Keyboard Input and Output
 
-Zion uses `keybus` for keyboard handler, which supports simultaneous keydown event, which is essential in direction control.
+Zion uses [**keybus**](https://github.com/thomasyimgit/keybus) for keyboard handler, which supports simultaneous keydown event, which is essential in direction control.
 
 <!--- The APIs of keybus should be modified further --->
 
@@ -106,7 +110,21 @@ Zion uses `keybus` for keyboard handler, which supports simultaneous keydown eve
 // pass in the DOM element to which all the events are binded
 const kb = zion.createKeybus(document)
 
+// simple keydown event
 let token = kb.down(13, () => console.log('Enter keydown!'))
+```
+
+or multi-key handlers
+
+```js
+kb.simulDown(38, () => console.log('up'))
+kb.simulDown(39, () => console.log('right'))
+
+function game_loop() {
+  // the only thing you need to do is to call this method in every game loop,
+  // the keybus will automatically check if anykey is pressed and run the according handlers (could be more than one)
+  kb.executeMultiKeyHandlers();
+}
 
 token.remove()
 ```
@@ -142,7 +160,7 @@ network.listen({
 
 TBD
 
-### Appendix: Utils
+### Appendix: Function Utils
 
 In game development you probably are gonna use some of the calculation / operation utilities that are provided by Zion:
 
@@ -159,7 +177,9 @@ _.getRandomInt(1, 6);  // range from 1 to 6
 
 * removeMultiElement
 
-### Demos
+### Gallery Page & Demos
+
+Check the games below on [**the gallery page**](http://thomasyimgit.github.io/csc481-591-assignments/) of Zion:
 
 Get the general idea and best practice with games built along with Zion:
 
@@ -170,6 +190,6 @@ Get the general idea and best practice with games built along with Zion:
 * [Cops and Robbers]() (AI)
 ## Acknowledgement
 
-* [@jegood]()
-* [@cntucker]()
-* [@cjvalent]()
+* [@jegood](https://github.com/jegood)
+* [@cntucker](https://github.com/cntucker)
+* [@cjvalent](https://github.com/cjvalent)
