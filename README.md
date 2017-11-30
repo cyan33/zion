@@ -53,6 +53,18 @@ Zion provides a few rendering utilities on top of the native canvas API, like `c
 
 Specifically, for image rendering, Zion uses the [**canvas-image-cache**](https://github.com/thomasyimgit/canvas-image-cache), which enhances the performance in a way that image instances will not be recreated from scratch for each rendering after being loaded at first.
 
+The basic APIs below:
+
+```js
+clearCanvas(canvas, context)
+coordinateConversion(canvas, x, y)  // get the coordination with respect to the canvas boundaries
+getBoundaries({ x, y }, size)
+generateRandomPosition(canvas, middle = false, spriteSize)
+createImageCache()  // create the canvas-image-cache utility
+drawRotate(context, { img, x, y, degrees })  // draw rotate sprites
+insertText(context, options = {})  // insert text into canvas
+```
+
 ### Particle System
 
 TBD
