@@ -7,9 +7,9 @@ function clearCanvas(canvas, context) {
 function coordinateConversion(canvas, x, y) {
   let box = canvas.getBoundingRect();
   return {
-      x: Math.round(x - box.left),
-      y: Math.round(y - box.right)
-  }
+    x: Math.round(x - box.left),
+    y: Math.round(y - box.right)
+  };
 }
 
 function getBoundaries(pos, size) {
@@ -17,11 +17,11 @@ function getBoundaries(pos, size) {
   const { width, height } = size;
 
   return {
-      top: y,
-      left: x,
-      bottom: y + height,
-      right: x + width,
-  }
+    top: y,
+    left: x,
+    bottom: y + height,
+    right: x + width,
+  };
 }
 
 function generateRandomPosition(canvas, middle = false, size) {
@@ -30,11 +30,11 @@ function generateRandomPosition(canvas, middle = false, size) {
   const { width, height } = size;
 
   if (middle) {
-      x = Math.round(getRandomNumBetween(canvas.width * 0.2, canvas.width * 0.8 - width));
-      y = Math.round(getRandomNumBetween(canvas.height * 0.2, canvas.height * 0.8 - height));
+    x = Math.round(getRandomNumBetween(canvas.width * 0.2, canvas.width * 0.8 - width));
+    y = Math.round(getRandomNumBetween(canvas.height * 0.2, canvas.height * 0.8 - height));
   } else {
-      x = Math.round(getRandomNumBetween(0, canvas.width - width));
-      y = Math.round(getRandomNumBetween(0, canvas.height - height));
+    x = Math.round(getRandomNumBetween(0, canvas.width - width));
+    y = Math.round(getRandomNumBetween(0, canvas.height - height));
   }
   return { x, y };
 }
@@ -46,10 +46,10 @@ function drawRotate(context, { img, x, y, degrees, effect }) {
   context.drawImage(img, 0, 0, img.width, img.height,
     -img.width / 2, -img.height / 2, img.width, img.height);
   if (!effect) {
-      let row = Math.floor(effect.currentFrame / effect.numFrames);
-      let col = Math.floor(effect.currentFrame % effect.numFrames);
-      context.drawImage(effect.img, col*effect.frameWidth, row*effect.frameHeight, effect.frameWidth, effect.frameHeight,
-          (-img.width / 2) + effect.offset.x, (-img.height / 2) + effect.offset.y, effect.frameWidth, effect.frameHeight);
+    let row = Math.floor(effect.currentFrame / effect.numFrames);
+    let col = Math.floor(effect.currentFrame % effect.numFrames);
+    context.drawImage(effect.img, col*effect.frameWidth, row*effect.frameHeight, effect.frameWidth, effect.frameHeight,
+      (-img.width / 2) + effect.offset.x, (-img.height / 2) + effect.offset.y, effect.frameWidth, effect.frameHeight);
   }
   context.restore();
 }
@@ -70,5 +70,5 @@ module.exports = () => {
   generateRandomPosition,
   createImageCache,
   drawRotate,
-  insertText
+  insertText;
 };

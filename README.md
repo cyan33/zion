@@ -74,9 +74,12 @@ TBD
 <!--- The APIs of audio manager should be modified further --->
 
 ```js
-const audioMgr = zion.createAudioManager();
-// static methods
-audioMgr.findByName('./collision.mp3').play();
+const audioMgr = zion.createAudioManager('/src/');  // absolute path from root folder
+
+audioMgr.loadAudios({
+  collision: 'collision.mp3'  // file name under the folder
+});
+audioMgr.findByName('collision').play();
 ```
 
 * Keyboard Input and Output
