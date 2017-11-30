@@ -1,16 +1,20 @@
 /**
  * @author Chang
  */
+const createComponents = require('./components');
 const createIO = require('./network');
-const createCanvasUtilities = require('./canvas');
+const createCanvasUtils = require('./canvas');
 const createDnD = require('./dnd');
 const createGame = require('./components/Game');
+const createUtils = require('./utils');
 
 const zion = (function() {
   return {
+    createComponents,
     createGame,
+    createUtils,
     createIO,
-    createCanvasUtilities,
+    createCanvasUtils,
     createDnD
   };
 })();

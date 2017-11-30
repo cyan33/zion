@@ -7,7 +7,7 @@ A light-weight, un-opinionated game engine/library based on HTML5 Canvas game de
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
-## Installation and Basic Usage
+## Get Started
 
 ```sh
 npm install --save zion
@@ -28,10 +28,10 @@ The more you decouple between the state updating logic and the game rendering, t
 ```js
 import zion from 'zion';
 
-const Zion = zion.game();
-// in your entry file you'll have the main class extend Zion
+const { Game } = zion.createComponents();
+// in your entry file you'll have the main class extend the base class `Game`
 
-class Game extends Zion {
+class MyGame extends Game {
   update() {
 
   }
@@ -58,6 +58,12 @@ Zion uses closure to handle all your configurations. Simple pass the big json in
 Zion provides a few rendering utilities on top of the native canvas API, like `clearCanvas()`, `coordinateConversion()`, `insertText()`, etc, which save you from diving too deep into the fuss.
 
 Specifically, for image rendering, Zion uses the [**canvas-image-cache**](https://github.com/thomasyimgit/canvas-image-cache), which enhances the performance in a way that image instances will not be recreated from scratch for each rendering after being loaded at first.
+
+```js
+const cu = zion.createCanvasUtils();
+
+cu.clearCanvas(canvas, context);
+```
 
 The basic APIs below:
 
@@ -133,6 +139,23 @@ network.listen({
 ### AI
 
 TBD
+
+### Appendix: Utils
+
+In game development you probably are gonna use some of the calculation / operation utilities that are provided by Zion:
+
+```js
+const _ = zion.createUtils();
+
+_.getRandomInt(1, 6);  // range from 1 to 6
+```
+
+* `getRandomInt(min, max);`
+* `removeMultiElementFromArray(arr, ...indexes);`
+* `getDistance(x1, y1, x2, y2);`
+* `calculateCenter(x, y, width, height);`: x and y is the left top origin of the box.
+
+* removeMultiElement
 
 ### Demos
 
