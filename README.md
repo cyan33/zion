@@ -1,3 +1,5 @@
+<img src="https://i.loli.net/2017/12/01/5a2067a13e1a3.jpg" width="500px" alt="zion-banner">
+
 # Zion
 
 A light-weight, un-opinionated game engine/library based on HTML5 Canvas game development.
