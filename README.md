@@ -28,7 +28,7 @@ The more you decouple between the state updating logic and the game rendering, t
 ```js
 import zion from 'zion';
 
-const Zion = zion.main();
+const Zion = zion.game();
 // in your entry file you'll have the main class extend Zion
 
 class Game extends Zion {
@@ -46,6 +46,12 @@ class Game extends Zion {
   }
 }
 ```
+
+### Game Config
+
+A scalable game should have a separated configuration file, where you define the name of every constants. But sometimes, importing some of the game configuration all over you project could be a pollution and useless noise.
+
+Zion uses closure to handle all your configurations. Simple pass the big json into `zion.addConfigs(jsonConfig);` and you are ready to use any of them elsewhere, by `zion.getConfig('config-key');`
 
 ### Basic Rendering
 
