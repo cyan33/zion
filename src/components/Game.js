@@ -1,3 +1,6 @@
+/**
+ * @author jegood
+ */
 class Game {
   // Sets the update loop
   update(){

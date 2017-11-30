@@ -1,3 +1,6 @@
+/**
+ * @author Chang
+ */
 class Sprite {
   constructor(src, { width, height }, { x, y }){
     this.src = src;

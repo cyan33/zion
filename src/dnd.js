@@ -1,3 +1,6 @@
+/**
+ * @author Chang
+ */
 const { getBoundaries } = require('./canvas')();
 
 /**

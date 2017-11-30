@@ -1,3 +1,6 @@
+/**
+ * @author Chang
+ */
 const socket = require('socket.io');
 
 function createIO(http) {

@@ -1,3 +1,6 @@
+/**
+ * @author Chang
+ */
 const createImageCache = require('canvas-image-cache');
 
 function clearCanvas(canvas, context) {

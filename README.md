@@ -47,11 +47,11 @@ class Game extends Zion {
 }
 ```
 
-### Game Config
+<!-- ### Game Config
 
 A scalable game should have a separated configuration file, where you define the name of every constants. But sometimes, importing some of the game configuration all over you project could be a pollution and useless noise.
 
-Zion uses closure to handle all your configurations. Simple pass the big json into `zion.addConfigs(jsonConfig);` and you are ready to use any of them elsewhere, by `zion.getConfig('config-key');`
+Zion uses closure to handle all your configurations. Simple pass the big json into `zion.addConfigs(jsonConfig);` and you are ready to use any of them elsewhere, by `zion.getConfig('config-key');` -->
 
 ### Basic Rendering
 

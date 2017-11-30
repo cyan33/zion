@@ -1,4 +1,5 @@
 /**
+ * @author jegood, Chang
  * todo: path should be more flexible and more capable of error handling
  * @param {String} path, which matches the regex pattern below
  */
