@@ -96,18 +96,15 @@ Zion uses `Express.js` and `Socket.io` to host online multi-player games. The ev
 
 ```js
 // in server
-const socket = require('socket.io');
-const http = require('http');
+const app = require('express')();
+const http = require('http').Server(app);
 const zion = require('zion');
 
-const io = socket(http)
-const network = zion.createNetwork();
+const network = zion.createIO(http);
 
 network.listen({
-  'event-A': callbackA() {
-    io.emit('event-name', fn);
-  },
-  'event-B': callbackB() {}
+  'event-A': fnA.bind(fnA, params),
+  'event-B': fnB.bind(fnB, params)
 });
 ```
 
