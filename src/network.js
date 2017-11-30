@@ -1,7 +1,7 @@
 const socket = require('socket.io');
 
 function createIO(http) {
-  const io = socket(http)
+  const io = socket(http);
 
   return {
     // the callback functions passed into options should be provided
@@ -11,7 +11,7 @@ function createIO(http) {
         io.on(key, options[key]);
       }
     }
-  }
+  };
 }
 
-module.exports = { createIO };
+module.exports = createIO;

@@ -55,15 +55,13 @@ Specifically, for image rendering, Zion uses the [**canvas-image-cache**](https:
 
 The basic APIs below:
 
-```js
-clearCanvas(canvas, context)
-coordinateConversion(canvas, x, y)  // get the coordination with respect to the canvas boundaries
-getBoundaries({ x, y }, size)
-generateRandomPosition(canvas, middle = false, spriteSize)
-createImageCache()  // create the canvas-image-cache utility
-drawRotate(context, { img, x, y, degrees })  // draw rotate sprites
-insertText(context, options = {})  // insert text into canvas
-```
+* `clearCanvas(canvas, context)`
+* `coordinateConversion(canvas, x, y)` : get the coordination with respect to the canvas boundaries
+* `getBoundaries({ x, y }, size)`
+* `generateRandomPosition(canvas, middle = false, spriteSize)`
+* `createImageCache()`: create the canvas-image-cache utility
+* `drawRotate(context, { img, x, y, degrees })`: draw rotate sprites
+* `insertText(context, options = {})`: insert text into canvas
 
 ### Particle System
 
@@ -98,7 +96,10 @@ token.remove()
 
 * Drag and Drop
 
-TBD
+Support basic drag and drop utilities:
+
+* `getDraggingItemIndex()`
+* `isCollapsed()`: dragging collision detection
 
 ### Network
 
