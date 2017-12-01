@@ -9,7 +9,24 @@ A light-weight, un-opinionated game engine/library based on HTML5 Canvas game de
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
-## Get Started
+
+# Table of Contents
+
+- [Zion](#zion)
+- [Get Started](#get-started)
+- [Features](#features)
+  - [Game Flow](#game-flow)
+  - [Basic Rendering](#basic-rendering)
+  - [Physics](#physics)
+  - [Particle Systems](#particle-systems)
+  - [I/O](#io)
+  - [Network](#network)
+  - [AI](#ai)
+- [Gallery Page](#gallery-page)
+- [Contribution](#contribution)
+- [Acknowledgement](#acknowledgement)
+
+# Get Started
 
 ```sh
 npm install --save zion
@@ -19,9 +36,9 @@ npm install --save zion
 import zion from 'zion';
 ```
 
-## Features
+# Features
 
-### Game Flow
+## Game Flow
 
 To build a game, whatever platform it's based on, we can think of the whole game as a (infinite) state machine. The flow is all about ***updating state*** and ***rendering the canvas*** in a constant interval (game loop).
 
@@ -59,7 +76,7 @@ A scalable game should have a separated configuration file, where you define the
 
 Zion uses closure to handle all your configurations. Simply pass the big json into `zion.addConfigs(jsonConfig);` and you are ready to use any of them elsewhere, by `zion.getConfig('config-key');` -->
 
-### Basic Rendering
+## Basic Rendering
 
 Zion provides a few rendering utilities on top of the native canvas API, like `clearCanvas()`, `coordinateConversion()`, `insertText()`, etc, which save you from diving too deep into the fuss.
 
@@ -81,7 +98,7 @@ The basic APIs below:
 * `drawRotate(context, { img, x, y, degrees })`: draw rotate sprites
 * `insertText(context, options = {})`: insert text into canvas
 
-### Physics
+## Physics
 
 Zion provides a basic physics engine for sprite-sprite collisions called `Obstacle`. Unlike traditional bounding-box based systems, the engine sub-divides each obstacle into a pre-set number of low, medium, or high boundary levels. This implementation eliminiates the need for entire sprite collision checks as the system can more finely detect intersections at specific sprite edges.
 
@@ -112,7 +129,7 @@ Zion provides additional support for debugging collision:
 * `getDetails()` : returns a string representation of this Obstacle's properties (size, position, divisionType, boundaries)
 * `drawBoundariesDebug()` : draws red squares indicating the on-screen location of an Obstacle's boundaries (use in your `draw()` function).
 
-### Particle Systems
+## Particle Systems
 
 Zion supports an extendable particle system for grouped-sprite management. For visual effects, Zion provides two functions for easy object creation: `createUniformParticles()` and `createRandomizedParticles()`. The former allows simple creation of uniform particle sets, providing an efficient solution for multiple like-objects. The latter allows for randomized particle set creation, suitable for varied graphical effects and unevenly distributed objects (e.g. varying sprite sizes, speeds, etc.). All particles extend our **Obstacle** Physics System, requiring no additional collision detection.
 
@@ -138,7 +155,7 @@ You can create a new Particle System by supplying a Particle's desired propertie
  fire.createRandomizedParticles(options);
  ```
  
-### I/O
+## I/O
 
 * Audio Manager
 
@@ -189,7 +206,7 @@ Support basic drag and drop utilities:
 * `getDraggingItemIndex()`
 * `isCollapsed()`: dragging collision detection
 
-### Network
+## Network
 
 Zion uses `Express.js` and `Socket.io` to host online multi-player games. The event-based communication between client and server makes it easy to figure out the data flow.
 
@@ -209,7 +226,7 @@ network.listen({
 });
 ```
 
-### AI
+## AI
 
 With most game AI, gameplay will revolve around player movement and interaction. Zion provides a fairly robust AI system, including standard movement, A* path-finding, and path-following. All player-centered functionality is provided by the `AI` class:
 
@@ -276,7 +293,7 @@ update() {
 }
 ```
 
-### Appendix: Function Utils
+## Appendix: Function Utils
 
 In game development you probably are gonna use some of the calculation / operation utilities that are provided by Zion:
 
@@ -293,9 +310,9 @@ _.getRandomInt(1, 6);  // range from 1 to 6
 
 * removeMultiElement
 
-### Gallery Page & Demos
+# Gallery Page
 
-Check the games below on [**the gallery page**](http://thomasyimgit.github.io/csc481-591-assignments/) of Zion:
+Check the games below on [**the gallery page**](http://thomasyimgit.github.io/Zion-demos/) of Zion:
 
 Get the general idea and best practice with games built along with Zion:
 
@@ -304,8 +321,15 @@ Get the general idea and best practice with games built along with Zion:
 * [Mutilplayer Online Snake Game]() (Network)
 * [Asteroids]() (Particle System, collision, etc)
 * [Cops and Robbers]() (AI)
-## Acknowledgement
+
+# Contribution
+
+All PRs, issues and bug report are welcomed. Here are the steps to contribute:
+1. Fork and clone this repo.
+2. Make some changes.
+3. Commit, push the changes to your forked repo.
+4. Compare and make a pull request.
+
+# Acknowledgement
 
 * [@jegood](https://github.com/jegood)
-* [@cntucker](https://github.com/cntucker)
-* [@cjvalent](https://github.com/cjvalent)
