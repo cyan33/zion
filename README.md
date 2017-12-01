@@ -23,7 +23,7 @@ import zion from 'zion';
 
 ### Game Flow
 
-To build a game, whatever platform it's based on, we can think of the whole game as a (infinite) state machine. The whold flow is all about ***updating state*** and ***rendering the canvas*** in a constant interval(game loop).
+To build a game, whatever platform it's based on, we can think of the whole game as a (infinite) state machine. The flow is all about ***updating state*** and ***rendering the canvas*** in a constant interval (game loop).
 
 The more you decouple between the state updating logic and the game rendering, the easier your game is to maintain and scale.
 
@@ -55,9 +55,9 @@ class MyGame extends Game {
 
 <!-- ### Game Config
 
-A scalable game should have a separated configuration file, where you define the name of every constants. But sometimes, importing some of the game configuration all over you project could be a pollution and useless noise.
+A scalable game should have a separated configuration file, where you define the name of every constants. But sometimes, importing some of the game configuration all over you project could be pollution and useless noise.
 
-Zion uses closure to handle all your configurations. Simple pass the big json into `zion.addConfigs(jsonConfig);` and you are ready to use any of them elsewhere, by `zion.getConfig('config-key');` -->
+Zion uses closure to handle all your configurations. Simply pass the big json into `zion.addConfigs(jsonConfig);` and you are ready to use any of them elsewhere, by `zion.getConfig('config-key');` -->
 
 ### Basic Rendering
 
@@ -81,10 +81,31 @@ The basic APIs below:
 * `drawRotate(context, { img, x, y, degrees })`: draw rotate sprites
 * `insertText(context, options = {})`: insert text into canvas
 
-### Particle System
+### Particle Systems
+Zion supports an extendable particle system for grouped-sprite management. For visual effects, Zion provides two functions for easy object creation: `createUniformParticles()` and `createRandomizedParticles()`. The former allows simple creation of uniform particle sets, providing an efficient solution for multiple like-objects. The latter allows for randomized particle set creation, suitable for varied graphical effects and unevenly distributed objects (e.g. varying sprite sizes, speeds, etc.). All particles extend our **Obstacle** Physics System, requiring no additional collision detection.
 
-TBD
+You can create a new Particle System by supplying a Particle's desired properties:
 
+```js
+ // Create two new ParticleSystems: one uniform, one random
+ let boulders = new ParticleSystem();
+ let fire = new ParticleSystem();
+ 
+ // Supply properties for the uniform system
+ boulders.createUniformParticles(src, size, position, speed, numParticles, divisionType);
+ 
+ // Specify options and create random particles
+ let properties = {
+     src: 'fire.png',
+     size: {width: 10, height: 10},
+     maxHorizontal: 30,
+     maxVertical: 40,
+     speed: 5,
+     divisionType: 0
+ };
+ fire.createRandomizedParticles(options);
+ ```
+ 
 ### I/O
 
 * Audio Manager
@@ -94,7 +115,7 @@ TBD
 ```js
 const audioMgr = zion.createAudioManager('/src/');  // absolute path from root folder
 
-audioMgr.loadAudios({
+audioMgr.loadAudio({
   collision: 'collision.mp3'  // file name under the folder
 });
 audioMgr.findByName('collision').play();
