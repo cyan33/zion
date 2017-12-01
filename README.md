@@ -81,7 +81,39 @@ The basic APIs below:
 * `drawRotate(context, { img, x, y, degrees })`: draw rotate sprites
 * `insertText(context, options = {})`: insert text into canvas
 
+### Physics
+
+Zion provides a basic physics engine for sprite-sprite collisions called `Obstacle`. Unlike traditional bounding-box based systems, the engine sub-divides each obstacle into a pre-set number of low, medium, or high boundary levels. This implementation eliminiates the need for entire sprite collision checks as the system can more finely detect intersections at specific sprite edges.
+
+Obstacles can be managed in groups or individually, depending on your game's structure:
+
+```js
+// Create a new obstacle. The last parameter specifies the divisionType for creating the different
+// boundary levels (0 - 2: Low, Medium, High).
+let obstacle = new Obstacle(src, {width: 16, height: 16}, {x: 0, y: 0}, 0);
+```
+
+Collision between obstacles and sprites is not strictly enforced. You may choose to apply collision through calling the `getCollision()` method from any obstacle. In this manner, obstacles and sprites that should not have collision are ignored.
+
+```js
+let car = new Sprite('car.png', size, position);
+
+/**
+ * objOffset specifies how close the sprite being examined should be allowed to come within 
+ * the obstacle's range. boundsOffset extends the base distance at which it collides with
+ * the obstacle.
+ */
+if(obstacle.getCollision(car, objOffset, boundsOffset)) {
+  // do something
+}
+```
+
+Zion provides additional support for debugging collision:
+* `getDetails()` : returns a string representation of this Obstacle's properties (size, position, divisionType, boundaries)
+* `drawBoundariesDebug()` : draws red squares indicating the on-screen location of an Obstacle's boundaries (use in your `draw()` function).
+
 ### Particle Systems
+
 Zion supports an extendable particle system for grouped-sprite management. For visual effects, Zion provides two functions for easy object creation: `createUniformParticles()` and `createRandomizedParticles()`. The former allows simple creation of uniform particle sets, providing an efficient solution for multiple like-objects. The latter allows for randomized particle set creation, suitable for varied graphical effects and unevenly distributed objects (e.g. varying sprite sizes, speeds, etc.). All particles extend our **Obstacle** Physics System, requiring no additional collision detection.
 
 You can create a new Particle System by supplying a Particle's desired properties:
