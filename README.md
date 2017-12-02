@@ -91,9 +91,9 @@ class SnakeSegment extends Sprite {
 
 - `Game` The game entry class. We suggest you extend it in your main game file.
 - `Sprite` The basic build block which are integrated into a larger scene.
-- `SpriteSheet` A bitmap image class that contains several smaller graphics in a tiled grid arrangement.
-- `Particle` and `ParticleSystem` See the physical section
-- `Obstacle`
+- `SpriteSheet` A bitmap image class that contains several smaller graphics in a tiled grid arrangement. Used in animations.
+- `Particle` and `ParticleSystem` See [Particle Systems](#particle-systems).
+- `Obstacle` An extendable collision-detection system. See [Physics](#physics).
 
 ## Basic Rendering
 
@@ -178,7 +178,7 @@ You can create a new Particle System by supplying a Particle's desired propertie
 ## I/O
 
 ### Audio Manager
-
+Zion provides a wrapper for managing audio assets. The `AudioManager` class allows you to create, load, and play game audio. This class can be easily extended to support more advanced game features:
 <!--- The APIs of audio manager should be modified further --->
 
 ```js
@@ -192,7 +192,7 @@ audioMgr.findByName('collision').play();
 
 ### Keyboard Input and Output
 
-Zion uses [**keybus**](https://github.com/thomasyimgit/keybus) for keyboard handler, which supports simultaneous keydown event, which is essential in direction control.
+Zion uses [**keybus**](https://github.com/thomasyimgit/keybus) for keyboard handler, which supports simultaneous keydown events essential in direction control.
 
 <!--- The APIs of keybus should be modified further --->
 
@@ -221,14 +221,14 @@ token.remove()
 
 ### Drag and Drop
 
-Support basic drag and drop utilities:
+Supports basic drag and drop utilities:
 
 - `getDraggingItemIndex()`
 - `isCollapsed()`: dragging collision detection
 
 ## Network
 
-Zion uses `Express.js` and `Socket.io` to host online multi-player games. The event-based communication between client and server makes it easy to figure out the data flow.
+Zion uses `Express.js` and `Socket.io` to host online multi-player games. This event-based communication between client and server makes it easy to figure out the data flow.
 
 <!--- The APIs should be modified further --->
 
@@ -248,7 +248,7 @@ network.listen({
 
 ## AI
 
-With most game AI, gameplay will revolve around player movement and interaction. Zion provides a fairly robust AI system, including standard movement, A* path-finding, and path-following. All player-centered functionality is provided by the `AI` class:
+With most game AI, gameplay will revolve around player movement and interaction. Zion provides a fairly robust AI system, including steering behaviors, A* path-finding, and path-following. All player-centered functionality is provided by the `AI` class:
 
 ```js
 let params = {
@@ -265,8 +265,10 @@ let character = new AI(src, size, position, params);
 For movement, `AI` provides the following extendable behaviors:
 - `seek(target)` : seek the given target's position.
 - `flee(target)` : flee from the given target's position.
-- `arrive(target)` : stop at the given target's position. The AI will slow and approach the target based on the initialized -*Radius of Satisfaction (ROS)** and **Radius of Deceleration (ROD)**
+- `arrive(target)` : stop at the given target's position. The AI will slow and approach the target based on the initialized **Radius of Satisfaction (ROS)** and **Radius of Deceleration (ROD)**
 - `follow(path, target)` : follow the given path to reach the intended target.
+
+For more information, you may check out an overview of each behavior's description [here](https://gamedevelopment.tutsplus.com/series/understanding-steering-behaviors--gamedev-12732)
 
 `AStar` complements `AI` by providing path-finding for any given weighted graph. The default hueristic utilizes Manhattan distance to find the optimal path for character movement:
 
@@ -315,7 +317,7 @@ update() {
 
 ## Appendix: Function Utils
 
-In game development you probably are gonna use some of the calculation / operation utilities that are provided by Zion:
+In game development you will propably use some of the calculation / operation utilities that are provided by Zion:
 
 ```js
 const _ = zion.createUtils();
@@ -332,7 +334,7 @@ _.getRandomInt(1, 6);  // range from 1 to 6
 
 # Gallery Page
 
-Check the games below on [**the gallery page**](http://thomasyimgit.github.io/Zion-demos/) of Zion:
+Check out the games below on [**the gallery page**](http://thomasyimgit.github.io/Zion-demos/) of Zion:
 
 Get the general idea and best practice with games built along with Zion:
 
