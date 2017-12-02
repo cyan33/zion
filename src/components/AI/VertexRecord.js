@@ -1,5 +1,5 @@
 class VertexRecord {
-  constructor(v){
+  constructor(v) {
     this.setNode(v); // type Vertex
     this.setCost(0);
     this.setEstCost(0);

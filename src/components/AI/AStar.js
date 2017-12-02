@@ -1,4 +1,5 @@
 const VertexRecord = require('./VertexRecord');
+const { getDistance } = require('../operations');
 
 /** the type of heuristic to use */
 const HEUR_TYPE = 0;
@@ -10,7 +11,7 @@ class AStar {
   }
     
   /**
-     * Finds the shortest path = require(an initial position to a target using A* search.);
+     * Finds the shortest path from an initial position to a target using A* search.
      * If no valid path is found, returns null. Defaults to manhattan heuristic, but can also
      * be switched to Euclidean if desired
      * @param graph the room graph by which to path find (Vertex list)
@@ -35,7 +36,8 @@ class AStar {
       // Get connections for this node
       let neighbors = current.getNode().getNeighbors();
       // Loop through node's neighbors
-      for(let n in neighbors){
+      for(let i = 0; i < neighbors.length; i++){
+        let n = neighbors[i];
         let endNode = n.getNeighbor(); // Vertex
         let endCost = current.getCost() + n.getWeight();
         let endHeuristic = 0.0;
@@ -72,12 +74,12 @@ class AStar {
         let index = graph.indexOf(endNode);
         endNode = graph[index];
         endNode.setParent(endRecord.getConn().getOrigin());
-        graph.splice(index, 0, endNode);
+        graph.splice(index, 1, endNode);
         // Update estimated total
         endRecord.setEstCost(endCost + endHeuristic);
 				
         // Then add to the open list
-        if(!open.indexOf(endRecord) == -1) open.push(endRecord);
+        if(open.indexOf(endRecord) === -1) open.push(endRecord);
       }
 			
       // Finished this node, so remove from open
@@ -122,7 +124,7 @@ class AStar {
 		
     // Search through the graph for the smallest estimated cost
     for(let i = 0; i < open.length; i++){
-      if(open.get[i].getEstCost() < smallest.getEstCost()){
+      if(open[i].getEstCost() < smallest.getEstCost()){
         smallest = open[i];
       }
     }
@@ -179,9 +181,8 @@ class AStar {
 	 * @param end goal node to which to calculate the distance (Vertex)
 	 * @return estimated cost from start to goal node
 	 */
-  // bug
   euclidean(from, end){
-    return Point.distance(from.getLoc().x, from.getLoc().y, end.getLoc().x, end.getLoc().y);
+    return getDistance(from.getLoc().x, from.getLoc().y, end.getLoc().x, end.getLoc().y);
   }
 	
   /**
@@ -189,15 +190,15 @@ class AStar {
      * Used for testing purposes.
 	 * @param n the number of nodes in the graph
 	 */
-  // displayMemoryAvgs(n){
-  //   let avgOpen = this.total_open / n;
-  //   console.log(`Average nodes on open list: ${avgOpen}`);
-  //   let avgMemory = (this.total_open + this.total_closed) / n;
-  //   console.log(`Average nodes in memory ${avgMemory}`);
-  // }
+  displayMemoryAvgs(n){
+    let avgOpen = this.total_open / n;
+    let avgMemory = (this.total_open + this.total_closed) / n;
+    return {avgOpen, avgMemory};
+  }
 	
   resetStats(){
     this.total_open = 0;
     this.total_closed = 0;
   }
 }
+module.exports = AStar;

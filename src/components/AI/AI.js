@@ -1,8 +1,7 @@
 const Sprite = require('../Sprite');
 const Vector = require('./Vector');
 const Path = require('./Path');
-const { getRandomInt } = require('../../utils')();
-/** distance between a boundary and this AI to ensure obstacle avoidance  */
+const { getRandomInt } = require('../utils')();
 /** target proximity to halt path following */
 const TARGET_PROX = 5;
 const vector = Vector();
@@ -10,20 +9,19 @@ const offset = 10;
 
 // *Note: all vector related methods will need to be updated
 class AI extends Sprite {
-  constructor (src, size, pos, vel, accel, maxForce, maxSpeed) {
+  constructor (src, size, pos, params) {
     super(src, size, pos);
-    this.position = pos; // position
     this.initPosition = pos; // initial position
-    this.velocity = vel; // velocity
-    this.acceleration = accel; // acceleration
-    this.maxForce = maxForce; // max steering force
-    this.maxSpeed = maxSpeed; // max speed
-    this.initMaxSpeed = maxSpeed; // initial max speed
+    this.velocity = params.velocity; // velocity
+    this.acceleration = params.acceleration; // acceleration
+    this.maxForce = params.maxForce; // max steering force
+    this.maxSpeed = params.maxSpeed; // max speed
+    this.initMaxSpeed = params.maxSpeed; // initial max speed
     this.currentNode = 0; // current node
-    this.maxAcceleration = 8; // max acceleration
-    this.rod = 50; // radius of deceleration at which to slow down
-    this.ros = 3; // radius of satisfaction in which to arrive at target
-    this.timeToTarget = 0.8; // Holds the time over which to achieve target speed
+    this.maxAcceleration = params.maxAcceleration; // max acceleration
+    this.rod = params.rod; // radius of deceleration at which to slow down (50)
+    this.ros = params.ros; // radius of satisfaction in which to arrive at target (3)
+    this.timeToTarget = params.timeToTarget; // Holds the time over which to achieve target speed (0.8)
     this.followingTarget = false; // are we currently following something?
   }
     
@@ -61,7 +59,7 @@ class AI extends Sprite {
      * @param f the force to apply
      */
   applyForce(f){
-    f = vector.add(this.acceleration, f);
+    this.acceleration = vector.add(this.acceleration, f);
   }
     
   /**
@@ -89,7 +87,7 @@ class AI extends Sprite {
      */
   flee(t){
     // Get the desired velocity vector away from the target
-    let des = vector.sub(pos, t);
+    let des = vector.sub(this.position, t);
     // Scale to max speed
     des = vector.normalize(des);
     des = vector.mult(des, this.maxSpeed);
@@ -106,19 +104,19 @@ class AI extends Sprite {
      */
   arrive(t){
     // Get direction target
-    let dir = vector.sub(t, pos);
+    let dir = vector.sub(t, this.position);
     let targetSpeed = 0;
     // Get distance to target
     let dist = vector.mag(dir);
     // If at target, do nothing
-    if(dist < ros){
+    if(dist < this.ros){
       // Stop within ros
       let stop = {x: -this.velocity.x/2, y:-this.velocity.y/2};
       this.applyForce(stop); // want to cancel
       return;
     }
     // If we're outside deceleration radius, go maxSpeed
-    if(dist > rod){
+    if(dist > this.rod){
       targetSpeed =this.maxSpeed;
     }else{
       // Otherwise, calculate scaled speed
@@ -129,11 +127,11 @@ class AI extends Sprite {
     dir = vector.mult(dir, targetSpeed);
     let steer = this.getOrientation(dir);
     // Need to slow down (added)
-    steer = vector.limit(steer, timeToTarget);
+    steer = vector.limit(steer, this.timeToTarget);
     //Check if acceleration is too fast
     if(vector.mag(steer) > this.maxAcceleration){
       steer = vector.normalize(steer);
-      steer = vector.mult(steer, maxAcceleration);
+      steer = vector.mult(steer, this.maxAcceleration);
     }
     // Limit force
     steer = vector.limit(steer, this.maxForce);
@@ -183,7 +181,7 @@ class AI extends Sprite {
         // Set the target to the next available node in the path
         target = p.getPath()[this.currentNode];
         // Check if we are within offset pixels of the target
-        if(vector.dist(pos, target) <= offset){
+        if(vector.dist(this.position, target) <= offset){
           // Update to the next node to arrive at
           this.currentNode++;
           // Check if we are on the last node
@@ -196,7 +194,7 @@ class AI extends Sprite {
         // Check if we're on the last node and the distance to the actual target is less than the distance
         // to that node
         if (this.currentNode == p.getPath().length - 1) { // on the last node
-          if(vector.dist(pos, t) < vector.dist(pos, target) || this.position != t){
+          if(vector.dist(this.position, t) < vector.dist(this.position, target) || this.position != t){
             this.seek(t);
           } else {
             this.arrive(target);
@@ -273,7 +271,7 @@ class AI extends Sprite {
     //		width  = dist(pos, height)
     // Want the offset to be somewhere within the character's radius + some offset
     for(let i = 0; i < boundaries.length; i++){
-      if(vector.dist(pos, boundaries[i]) <= 35)
+      if(vector.dist(this.position, boundaries[i]) <= 35)
         return true;
     }
     return false;
@@ -287,13 +285,12 @@ class AI extends Sprite {
      */
   followNewTarget(g, aStar){
     // Get a random point on the graph and pathfind
-    // bug
-    let target_index = getRandomInt(g.getGraph().utils.length);
-    let target = g.getGraph()[target_index].getLoc();
-    let path = this.findNextTarget(target, g, aStar); // Path
+    const target_index = getRandomInt(g.getGraph().length);
+    const target = g.getGraph()[target_index].getLoc();
+    const path = this.findNextTarget(target, g, aStar); // Path
         
     // Follow this path until we are within a set distance from our target
-    while(vector.dist(this.pos, target) > TARGET_PROX){
+    while(vector.dist(this.position, target) > TARGET_PROX){
       this.follow(path, target);
       // perform AI updates
       this.run();

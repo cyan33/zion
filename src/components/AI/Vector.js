@@ -1,5 +1,6 @@
 const { getDistance } = require('../operations');
 
+// todo: should be a class
 function Vector() {
   const add = (v1, v2) => {
     return {x: v1.x + v2.x, y: v1.y + v2.y};
