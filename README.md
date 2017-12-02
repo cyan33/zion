@@ -16,6 +16,7 @@ A light-weight, un-opinionated game engine/library based on HTML5 Canvas game de
 - [Get Started](#get-started)
 - [Features](#features)
   - [Game Flow](#game-flow)
+  - [Base Classes](#base-classes)
   - [Basic Rendering](#basic-rendering)
   - [Physics](#physics)
   - [Particle Systems](#particle-systems)
@@ -76,6 +77,24 @@ A scalable game should have a separated configuration file, where you define the
 
 Zion uses closure to handle all your configurations. Simply pass the big json into `zion.addConfigs(jsonConfig);` and you are ready to use any of them elsewhere, by `zion.getConfig('config-key');` -->
 
+## Base Classes
+
+To conform to the Object-Oriented Paradigm, a few base classes are provided for extension.
+
+```js
+const { Sprite } = zion.createComponents();
+
+class SnakeSegment extends Sprite {
+  // ...
+}
+```
+
+- `Game` The game entry class. We suggest you extend it in your main game file.
+- `Sprite` The basic build block which are integrated into a larger scene.
+- `SpriteSheet` A bitmap image class that contains several smaller graphics in a tiled grid arrangement.
+- `Particle` and `ParticleSystem` See the physical section
+- `Obstacle`
+
 ## Basic Rendering
 
 Zion provides a few rendering utilities on top of the native canvas API, like `clearCanvas()`, `coordinateConversion()`, `insertText()`, etc, which save you from diving too deep into the fuss.
@@ -90,13 +109,13 @@ cu.clearCanvas(canvas, context);
 
 The basic APIs below:
 
-* `clearCanvas(canvas, context)`
-* `coordinateConversion(canvas, x, y)` : get the coordination with respect to the canvas boundaries
-* `getBoundaries({ x, y }, size)`
-* `generateRandomPosition(canvas, middle = false, spriteSize)`
-* `createImageCache()`: create the canvas-image-cache utility
-* `drawRotate(context, { img, x, y, degrees })`: draw rotate sprites
-* `insertText(context, options = {})`: insert text into canvas
+- `clearCanvas(canvas, context)`
+- `coordinateConversion(canvas, x, y)` : get the coordination with respect to the canvas boundaries
+- `getBoundaries({ x, y }, size)`
+- `generateRandomPosition(canvas, middle = false, spriteSize)`
+- `createImageCache()`: create the canvas-image-cache utility
+- `drawRotate(context, { img, x, y, degrees })`: draw rotate sprites
+- `insertText(context, options = {})`: insert text into canvas
 
 ## Physics
 
@@ -126,8 +145,9 @@ if(obstacle.getCollision(car, objOffset, boundsOffset)) {
 ```
 
 Zion provides additional support for debugging collision:
-* `getDetails()` : returns a string representation of this Obstacle's properties (size, position, divisionType, boundaries)
-* `drawBoundariesDebug()` : draws red squares indicating the on-screen location of an Obstacle's boundaries (use in your `draw()` function).
+
+- `getDetails()` Returns a string representation of this Obstacle's properties (size, position, divisionType, boundaries)
+- `drawBoundariesDebug()` Draws red squares indicating the on-screen location of an Obstacle's boundaries (use in your `draw()` function).
 
 ## Particle Systems
 
@@ -139,10 +159,10 @@ You can create a new Particle System by supplying a Particle's desired propertie
  // Create two new ParticleSystems: one uniform, one random
  let boulders = new ParticleSystem();
  let fire = new ParticleSystem();
- 
+
  // Supply properties for the uniform system
  boulders.createUniformParticles(src, size, position, speed, numParticles, divisionType);
- 
+
  // Specify options and create random particles
  let properties = {
      src: 'fire.png',
@@ -154,10 +174,10 @@ You can create a new Particle System by supplying a Particle's desired propertie
  };
  fire.createRandomizedParticles(options);
  ```
- 
+
 ## I/O
 
-* Audio Manager
+### Audio Manager
 
 <!--- The APIs of audio manager should be modified further --->
 
@@ -170,7 +190,7 @@ audioMgr.loadAudio({
 audioMgr.findByName('collision').play();
 ```
 
-* Keyboard Input and Output
+### Keyboard Input and Output
 
 Zion uses [**keybus**](https://github.com/thomasyimgit/keybus) for keyboard handler, which supports simultaneous keydown event, which is essential in direction control.
 
@@ -199,12 +219,12 @@ function game_loop() {
 token.remove()
 ```
 
-* Drag and Drop
+### Drag and Drop
 
 Support basic drag and drop utilities:
 
-* `getDraggingItemIndex()`
-* `isCollapsed()`: dragging collision detection
+- `getDraggingItemIndex()`
+- `isCollapsed()`: dragging collision detection
 
 ## Network
 
@@ -243,10 +263,10 @@ let character = new AI(src, size, position, params);
 ```
 
 For movement, `AI` provides the following extendable behaviors:
-* `seek(target)` : seek the given target's position.
-* `flee(target)` : flee from the given target's position.
-* `arrive(target)` : stop at the given target's position. The AI will slow and approach the target based on the initialized **Radius of Satisfaction (ROS)** and **Radius of Deceleration (ROD)**
-* `follow(path, target)` : follow the given path to reach the intended target.
+- `seek(target)` : seek the given target's position.
+- `flee(target)` : flee from the given target's position.
+- `arrive(target)` : stop at the given target's position. The AI will slow and approach the target based on the initialized -*Radius of Satisfaction (ROS)** and **Radius of Deceleration (ROD)**
+- `follow(path, target)` : follow the given path to reach the intended target.
 
 `AStar` complements `AI` by providing path-finding for any given weighted graph. The default hueristic utilizes Manhattan distance to find the optimal path for character movement:
 
@@ -303,12 +323,12 @@ const _ = zion.createUtils();
 _.getRandomInt(1, 6);  // range from 1 to 6
 ```
 
-* `getRandomInt(min, max);`
-* `removeMultiElementFromArray(arr, ...indexes);`
-* `getDistance(x1, y1, x2, y2);`
-* `calculateCenter(x, y, width, height);`: x and y is the left top origin of the box.
+- `getRandomInt(min, max);`
+- `removeMultiElementFromArray(arr, ...indexes);`
+- `getDistance(x1, y1, x2, y2);`
+- `calculateCenter(x, y, width, height);`: x and y is the left top origin of the box.
 
-* removeMultiElement
+- removeMultiElement
 
 # Gallery Page
 
@@ -316,11 +336,11 @@ Check the games below on [**the gallery page**](http://thomasyimgit.github.io/Zi
 
 Get the general idea and best practice with games built along with Zion:
 
-* [Alchemy Game]() (drag n drop)
-* [Local Snake Game]() (Basic rendering)
-* [Mutilplayer Online Snake Game]() (Network)
-* [Asteroids]() (Particle System, collision, etc)
-* [Cops and Robbers]() (AI)
+- [Alchemy Game]() (drag n drop)
+- [Local Snake Game]() (Basic rendering)
+- [Mutilplayer Online Snake Game]() (Network)
+- [Asteroids]() (Particle System, collision, etc)
+- [Cops and Robbers]() (AI)
 
 # Contribution
 
@@ -332,4 +352,4 @@ All PRs, issues and bug report are welcomed. Here are the steps to contribute:
 
 # Acknowledgement
 
-* [@jegood](https://github.com/jegood)
+- [@jegood](https://github.com/jegood)
