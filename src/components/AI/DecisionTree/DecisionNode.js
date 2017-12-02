@@ -1,4 +1,5 @@
-const { CHECK_METHOD, ACTION_METHOD } = require('./options');
+const CHECK_METHOD = 'check-method';
+const ACTION_METHOD = 'action-method';
 
 /**
  * Decision node used in traversing a Decision Tree. This tree is strictly binary for the purposes
@@ -75,6 +76,7 @@ class DecisionNode {
     // Otherwise, get the children
     return disp + ' leftChild: ' + this.trueNode.toString() + '\nrightChild: ' + this.falseNode.toString() + '\n';
   }
+
 }
 
 module.exports = DecisionNode;

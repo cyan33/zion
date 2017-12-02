@@ -10,22 +10,22 @@ class Vertex {
   }
     
   /**
- * Adds a neighbor to this Vertex's edge list
+    * Adds a neighbor to this Vertex's edge list
     * @param v the vertex to add
     * @param dist the edge weight between these vertices
     */
   addNeighbor(v, dist){
     if(!this.checkInNeighbors(v)){
-      this.neighbors.add(new Edge(this, v, dist));
+      this.neighbors.push(new Edge(this, v, dist));
     }
     return false;
   }
     
   /**
-     * Checks if the vertex to add is already a neighbor
-     * @param v the vertex to check 
-     * @return if the vertex to add is already a neighbor
-     */
+    * Checks if the vertex to add is already a neighbor
+    * @param v the vertex to check 
+    * @return if the vertex to add is already a neighbor
+    */
   checkInNeighbors(v){
     // Don't add yourself (edge case)
     if(v.getValue() == this.value){
@@ -41,10 +41,10 @@ class Vertex {
   }
     
   /**
-     * Tests if this Vertex and the given object are equal.
-     * @param o the object to test
-     * @return if this vertex and the object are equal
-     */
+    * Tests if this Vertex and the given object are equal.
+    * @param o the object to test
+    * @return if this vertex and the object are equal
+    */
   equals(o){
     if(o instanceof Vertex) {
       if(o.getValue() == this.value){
@@ -55,41 +55,41 @@ class Vertex {
   }
     
   /**
-     * Gets the value for this vertex
-     * @return this vertex's value
-     */
+    * Gets the value for this vertex
+    * @return this vertex's value
+    */
   getValue(){
     return this.value;
   }
     
   /**
-     * Gets this vertex's neighbors
-     * @return this vertex's neighbors
-     */
+    * Gets this vertex's neighbors
+    * @return this vertex's neighbors
+    */
   getNeighbors(){
     return this.neighbors;
   }
     
   /**
-     * Sets this vertex's parent
-     * @param v the parent vertex to set
-     */
+    * Sets this vertex's parent
+    * @param v the parent vertex to set
+    */
   setParent(v){
     this.parent = v;
   }
     
   /**
-     * Gets the parent for this vertex
-     * @return this vertex's parent
-     */
+    * Gets the parent for this vertex
+    * @return this vertex's parent
+    */
   getParent(){
     return this.parent;
   }
     
   /**
-     * String representation for this vertex
-     * @return string representation for this vertex
-     */
+    * String representation for this vertex
+    * @return string representation for this vertex
+    */
   toString(){
     let disp = 'Vertex ' + this.value + ' - Neighbors: [';
     for(let e in this.neighbors){
@@ -132,4 +132,4 @@ class Vertex {
   }
 }
 
-export default Vertex;
+module.exports = Vertex;
