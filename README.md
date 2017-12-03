@@ -30,11 +30,11 @@ A light-weight, un-opinionated game engine/library based on HTML5 Canvas game de
 # Get Started
 
 ```sh
-npm install --save zion
+npm install --save zion-engine
 ```
 
 ```js
-import zion from 'zion';
+import zion from 'zion-engine';
 ```
 
 # Features

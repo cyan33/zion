@@ -1,6 +1,6 @@
 {
-  "name": "zion",
-  "version": "0.0.1",
+  "name": "zion-engine",
+  "version": "0.1.0",
   "description": "A light-weight, un-opinionated game engine/library based on HTML5 Canvas game development.",
   "main": "./src/index.js",
   "scripts": {
