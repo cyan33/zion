@@ -28,6 +28,7 @@
     "eslint": "^4.12.0"
   },
   "dependencies": {
-    "canvas-image-cache": "0.0.1"
+    "canvas-image-cache": "0.0.1",
+    "keybus": "0.0.2"
   }
 }
