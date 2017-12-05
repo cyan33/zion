@@ -7,6 +7,7 @@ const createCanvasUtils = require('./canvas');
 const createDnD = require('./dnd');
 const createGame = require('./components/Game');
 const createUtils = require('./utils');
+const createKeyBus = require('./keyboard');
 
 const zion = (function() {
   return {
@@ -14,6 +15,7 @@ const zion = (function() {
     createGame,
     createUtils,
     createIO,
+    createKeyBus,
     createCanvasUtils,
     createDnD
   };
