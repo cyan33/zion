@@ -7,6 +7,8 @@ const Particle = require('./Particle');
 const ParticleSystem = require('./ParticleSystem');
 const Sprite = require('./Sprite');
 const SpriteSheet = require('./SpriteSheet');
+const AI = require('./AI/AI');
+const AStar = require('./AI/AStar');
 
 module.exports = () => {
   return {
@@ -15,6 +17,8 @@ module.exports = () => {
     Particle,
     ParticleSystem,
     Sprite,
-    SpriteSheet
+    SpriteSheet,
+    AI,
+    AStar
   };
 };

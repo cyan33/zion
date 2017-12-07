@@ -4,21 +4,29 @@
 const createComponents = require('./components');
 const createIO = require('./network');
 const createCanvasUtils = require('./canvas');
+const createAudioManager = require('./audioManager');
 const createDnD = require('./dnd');
-const createGame = require('./components/Game');
 const createUtils = require('./utils');
 const createKeyBus = require('./keyboard');
 
-const zion = (function() {
-  return {
+(function(root) {
+  const zion = {
     createComponents,
-    createGame,
     createUtils,
     createIO,
     createKeyBus,
+    createAudioManager,
     createCanvasUtils,
     createDnD
   };
-})();
 
-module.exports = zion;
+  if (typeof exports === 'object') {
+    module.exports = zion;
+    /* eslint-disable no-undef */
+  } else if (define && typeof define === 'function' && define.amd) {
+    /* eslint-disable no-undef */
+    define(function() { return root.zion = zion; });
+  } else {
+    root.zion = zion;
+  }
+})(typeof window === 'object' ? window : global);

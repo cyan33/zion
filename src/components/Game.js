@@ -4,13 +4,13 @@
 class Game {
   // Sets the update loop
   update(){
-    // eslint-disable-next-line no-console
+    /* eslint-disable no-console */
     console.warn('Update must be implemented');
   }
 
   // Sets the render loop
   render() {
-    // eslint-disable-next-line no-console
+    /* eslint-disable no-console */
     console.warn('Render must be implemented');
   }
 
