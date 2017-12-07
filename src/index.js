@@ -1,8 +1,8 @@
 /**
  * @author Chang
  */
-const createComponents = require('./components');
-const createIO = require('./network');
+// const createComponents = require('./components/index');
+// const createIO = require('./network');
 const createCanvasUtils = require('./canvas');
 const createAudioManager = require('./audioManager');
 const createDnD = require('./dnd');
@@ -11,9 +11,9 @@ const createKeyBus = require('./keyboard');
 
 (function(root) {
   const zion = {
-    createComponents,
+    // createComponents,
     createUtils,
-    createIO,
+    // createIO,
     createKeyBus,
     createAudioManager,
     createCanvasUtils,
