@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [Get Started](./book_src/get-started.md)
 * [Features](./book_src/features.md)
   * [Game Flow](./book_src/game-flow.md)
   * [Base Classes](./book_src/base-classes.md)
