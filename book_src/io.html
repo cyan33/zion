@@ -1,0 +1,420 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>I/O · Zion Document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="network.html" />
+    
+    
+    <link rel="prev" href="physics.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="features.html">
+            
+                <a href="features.html">
+            
+                    
+                    Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="game-flow.html">
+            
+                <a href="game-flow.html">
+            
+                    
+                    Game Flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="base-classes.html">
+            
+                <a href="base-classes.html">
+            
+                    
+                    Base Classes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="basic-rendering.html">
+            
+                <a href="basic-rendering.html">
+            
+                    
+                    Basic Rendering
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="physics.html">
+            
+                <a href="physics.html">
+            
+                    
+                    Physics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5" data-path="io.html">
+            
+                <a href="io.html">
+            
+                    
+                    I/O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="network.html">
+            
+                <a href="network.html">
+            
+                    
+                    Network
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="ai.html">
+            
+                <a href="ai.html">
+            
+                    
+                    AI
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="gallery-page.html">
+            
+                <a href="gallery-page.html">
+            
+                    
+                    Gallery Page
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <a target="_blank" href="https://github.com/thomasyimgit/Zion#contribution">
+            
+                    
+                    Contribution
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <a target="_blank" href="https://github.com/thomasyimgit/Zion#acknowledgement">
+            
+                    
+                    Acknowledgement
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >I/O</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="io">I/O</h2>
+<h3 id="keyboard-handler">Keyboard Handler</h3>
+<p>Zion uses <a href="https://github.com/thomasyimgit/keybus" target="_blank"><code>KeyBus</code></a> as its keyboard handling component. It supports basic keyboard event, and wraps up a hash-based simultaneous multikey handler functionality(<a href="https://stackoverflow.com/questions/15661796/how-to-handle-multiple-keypresses-with-canvas" target="_blank">Why?</a>).</p>
+<p>Basic Usage:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> KeyBus <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;keybus&apos;</span>
+
+<span class="hljs-keyword">const</span> kb = <span class="hljs-keyword">new</span> KeyBus(<span class="hljs-built_in">document</span>)
+
+<span class="hljs-keyword">let</span> enterKeydownHandler = kb.down(<span class="hljs-number">13</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Enter keydown!&apos;</span>))
+
+<span class="hljs-comment">// to remove the keydown event handler for a specific key and event</span>
+enterKeydownHandler.remove()
+</code></pre>
+<p>Multikey handler:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;my-canvas&apos;</span>)
+<span class="hljs-keyword">const</span> kb = <span class="hljs-keyword">new</span> KeyBus(canvas)
+
+kb.simulDown(<span class="hljs-number">38</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;up&apos;</span>))
+kb.simulDown(<span class="hljs-number">39</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;right&apos;</span>))
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">game_loop</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// the only thing you need to do is to call this method in every game loop,</span>
+  <span class="hljs-comment">// the keybus will automatically check if anykey is pressed and run the according handlers (could be more than one)</span>
+  kb.executeMultiKeyHandlers();
+}
+</code></pre>
+<h3 id="audio-manager">Audio Manager</h3>
+<p>Zion provides a wrapper for managing audio assets. The <code>AudioManager</code> class allows you to create, load, and play game audio. This class can be easily extended to support more advanced game features:
+<!--- The APIs of audio manager should be modified further ---></p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> audioMgr = zion.createAudioManager(<span class="hljs-string">&apos;/src/&apos;</span>);  <span class="hljs-comment">// absolute path from root folder</span>
+
+audioMgr.loadAudio({
+  collision: <span class="hljs-string">&apos;collision.mp3&apos;</span>  <span class="hljs-comment">// file name under the folder</span>
+});
+audioMgr.findByName(<span class="hljs-string">&apos;collision&apos;</span>).play();
+</code></pre>
+<h3 id="drag-and-drop">Drag and Drop</h3>
+<p>Supports basic drag and drop utilities:</p>
+<ul>
+<li><code>getDraggingItemIndex()</code></li>
+<li><code>isCollapsed()</code>: dragging collision detection</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="physics.html" class="navigation navigation-prev " aria-label="Previous page: Physics">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="network.html" class="navigation navigation-next " aria-label="Next page: Network">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"I/O","level":"1.2.5","depth":2,"next":{"title":"Network","level":"1.2.6","depth":2,"path":"book_src/network.md","ref":"./book_src/network.md","articles":[]},"previous":{"title":"Physics","level":"1.2.4","depth":2,"path":"book_src/physics.md","ref":"./book_src/physics.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Zion Document","gitbook":"*"},"file":{"path":"book_src/io.md","mtime":"2017-12-07T01:01:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-07T01:17:19.151Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
