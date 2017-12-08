@@ -1,7 +1,7 @@
 /**
  * @author Chang
  */
-// const createComponents = require('./components/index');
+const createComponents = require('./components/index');
 // const createIO = require('./network');
 const createCanvasUtils = require('./canvas');
 const createAudioManager = require('./audioManager');
@@ -11,7 +11,7 @@ const createKeyBus = require('./keyboard');
 
 (function(root) {
   const zion = {
-    // createComponents,
+    createComponents,
     createUtils,
     // createIO,
     createKeyBus,
