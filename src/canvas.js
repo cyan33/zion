@@ -66,12 +66,12 @@ function insertText(context, options = { }) {
   context.fillText(text, x, y);
 }
 
-module.exports = () => {
+module.exports = () => ({
   clearCanvas,
   coordinateConversion,
   getBoundaries,
   generateRandomPosition,
   createImageCache,
   drawRotate,
-  insertText;
-};
+  insertText
+});

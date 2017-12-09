@@ -18,9 +18,9 @@ function calculateCenter(x, y, width, height) {
   return {x: x + (0.5 * width), y: y + (0.5 * height)};
 }
 
-module.exports = () => {
+module.exports = () => ({
   removeMultiElementFromArray,
   getRandomInt,
   getDistance,
-  calculateCenter;
-};
+  calculateCenter
+});

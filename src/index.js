@@ -1,7 +1,7 @@
 /**
  * @author Chang
  */
-const createComponents = require('./components/index');
+const createComponents = require('./components');
 // const createIO = require('./network');
 const createCanvasUtils = require('./canvas');
 const createAudioManager = require('./audioManager');

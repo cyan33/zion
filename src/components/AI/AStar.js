@@ -1,5 +1,5 @@
 const VertexRecord = require('./VertexRecord');
-const { getDistance } = require('../operations');
+const { getDistance } = require('../../utils')();
 
 /** the type of heuristic to use */
 const HEUR_TYPE = 0;

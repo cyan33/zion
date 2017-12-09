@@ -1,4 +1,4 @@
-const { getDistance } = require('../operations');
+const { getDistance } = require('../../utils')();
 
 // todo: should be a class
 function Vector() {

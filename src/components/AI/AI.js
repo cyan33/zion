@@ -1,7 +1,7 @@
 const Sprite = require('../Sprite');
 const Vector = require('./Vector');
 const Path = require('./Path');
-const { getRandomInt } = require('../utils')();
+const { getRandomInt } = require('../../utils')();
 /** target proximity to halt path following */
 const TARGET_PROX = 5;
 const vector = Vector();

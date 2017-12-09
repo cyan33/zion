@@ -1,5 +1,5 @@
 const Vertex = require('./Vertex');
-const {calculateCenter, getDistance} = require('../operations');
+const { calculateCenter, getDistance } = require('../../utils')();
 
 class GraphGenerator {
   constructor(){

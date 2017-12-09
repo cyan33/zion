@@ -7,7 +7,7 @@ const { getBoundaries } = require('./canvas')();
  * drag and drop in canvas is much different than in DOM, because the canvas comes
  * as a whole, so these functions may seem to be hacky, or dirty.
  */
-export default function createDnD() {
+function createDnD() {
   const getDraggingItemIndex = (items, x, y) => {
     for (let i = 0; i < items.length; i++) {
       let currItem = items[i];
@@ -60,3 +60,5 @@ export default function createDnD() {
     getDraggingItemIndex,
   };
 }
+
+module.exports = createDnD;

@@ -2,7 +2,7 @@
  * @author jegood
  */
 const Sprite = require('./Sprite');
-const { getDistance, calculateCenter } = require('./operations');
+const { getDistance, calculateCenter } = require('../utils')();
 const NUM_SECTIONS = 9;
 
 class Obstacle extends Sprite {
@@ -52,4 +52,4 @@ class Obstacle extends Sprite {
   }
 }
 
-export default Obstacle;
+module.exports = Obstacle;

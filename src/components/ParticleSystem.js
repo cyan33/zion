@@ -1,7 +1,7 @@
 /**
  * @author jegood
  */
-const _ = require('../operations')();
+const _ = require('../utils')();
 const Particle = require('./Particle');
 /**
  * Class for handling particle systems. For now, simply allows management

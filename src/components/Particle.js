@@ -2,7 +2,7 @@
  * @author jegood
  */
 const Obstacle = require('./Obstacle');
-const { getRandomNumber } = require('../operations');
+const { getRandomNumber } = require('../utils')();
 const MAX_CIRCLE = 360;
 
 class Particle extends Obstacle {
