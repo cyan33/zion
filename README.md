@@ -19,7 +19,7 @@ import zion from 'zion-engine';
 
 ## Features
 
-Check the document [here](https://cyan33.github.io/zion/).
+Check the document [here](https://cyan33.github.io/Zion/).
 
 ## Tutorial and Resources
 
