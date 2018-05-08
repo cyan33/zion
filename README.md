@@ -36,4 +36,4 @@ All PRs, issues and bug report are welcomed. Here are the steps to contribute:
 
 ## Acknowledgement
 
-- [@jegood](https://github.com/jegood)
+- [@jegood95](https://github.com/jegood95)
