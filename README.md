@@ -34,6 +34,9 @@ All PRs, issues and bug report are welcomed. Here are the steps to contribute:
 1. Commit, push the changes to your forked repo.
 1. Compare and make a pull request.
 
+## Sample Projects
+Having trouble getting started? See the engine in action [![here](https://github.com/cyan33/Zion-demos).
+
 ## Acknowledgement
 
 - [@jegood95](https://github.com/jegood95)
